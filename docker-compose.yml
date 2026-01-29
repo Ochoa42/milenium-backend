@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  postgres:
+    # container_name: postgres_db
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    #comenta sta linea del ports si quieres que este en produccion y corra backend y posgrest en docker
+    ports:   
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Servicio de tu Backend
+  # backend:
+  #   build: .  # Le dice a Docker que construya la imagen usando el Dockerfile en esta carpeta
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3000:3000"  # Expone el puerto 3000 de tu backend al puerto 3000 de tu máquina
+  #   environment:
+  #     DB_URL: ${DB_URL} # Pasa la URL de conexión a tu app
+  #     NODE_ENV: development
+  #   depends_on:
+  #     - postgres # Muy importante: asegura que la base de datos inicie primero
+
+volumes:
+  postgres_data:
