@@ -43,7 +43,7 @@ export const login = asyncHandler(async (req, res, next) => {
 export const forgotPassword = asyncHandler(async (req, res, next) => {
   const { email } = req.body;
   const user = await usuariosService.findUserByEmail(email);
-
+  console.log(user);
   if (user) {
     const { resetToken, password_reset_token, password_reset_expires } = authService.generatePasswordResetToken();
     user.password_reset_token = password_reset_token;
