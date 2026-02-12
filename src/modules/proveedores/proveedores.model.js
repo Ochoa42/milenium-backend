@@ -17,6 +17,18 @@ export default (sequelize) => {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    nit_ci: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
+    },
+    razon_social: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    contacto: {
+      type: DataTypes.STRING(100),
+      allowNull: true,
+    },
     apellido_paterno: {
       type: DataTypes.STRING(50),
       allowNull: false,

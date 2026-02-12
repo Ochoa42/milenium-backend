@@ -6,7 +6,7 @@ class Error extends Model {
    * El cargador de modelos llamará a este método automáticamente.
    */
   static associate(models) {
-    // Ejemplo: this.belongsTo(models.User, { foreignKey: 'userId' });
+    // Ejemplo: this.belongsTo(mdels.User, { foreignKey: 'userId' });
   }
 }
 

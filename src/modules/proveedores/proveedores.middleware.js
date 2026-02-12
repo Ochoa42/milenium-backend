@@ -2,7 +2,6 @@ import { createProveedorSchema, updateProveedorSchema } from './proveedores.sche
 import * as proveedoresService from './proveedores.service.js';
 import { z } from 'zod';
 
-// Middleware reutilizable para validar con Zod
 export const validateRequest = (schema) => (req, res, next) => {
   try {
     schema.parse(req.body);

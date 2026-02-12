@@ -10,7 +10,7 @@ export const findOne = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
   const empleado = await empleadosService.findEmpleadoById(id);
   if (!empleado) {
-     return res.status(404).json({
+    return res.status(404).json({
       status: 'error',
       message: `El empleado con ID ${id} no fue encontrado.`,
     });
@@ -31,5 +31,5 @@ export const update = asyncHandler(async (req, res, next) => {
 export const remove = asyncHandler(async (req, res, next) => {
   const { id } = req.params;
   await empleadosService.deleteEmpleado(id);
-  res.status(204).send(); // 204 No Content
+  res.status(204).send();
 });

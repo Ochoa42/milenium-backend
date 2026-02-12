@@ -13,18 +13,15 @@ export const register = asyncHandler(async (req, res, next) => {
 
 // LOGIN
 export const login = asyncHandler(async (req, res, next) => {
-  // Al no haber middleware en la ruta, esta es la UNICA vez que se ejecuta esto.
   passport.authenticate('local', { session: false }, (err, user, info) => {
     if (err) return next(err);
     if (!user) {
-      // Aquí puedes personalizar el mensaje si info trae algo raro
       return res.status(401).json({
         status: 'error',
         message: info ? info.message : 'Credenciales incorrectas'
       });
     }
 
-    // Generar token
     const token = authService.signToken(user);
 
     res.status(200).json({
@@ -33,7 +30,7 @@ export const login = asyncHandler(async (req, res, next) => {
       data: {
         id: user.id,
         email: user.email,
-        rol_id: user.rol_id // Útil para el frontend
+        rol_id: user.rol_id
       },
     });
   })(req, res, next);
@@ -83,7 +80,6 @@ export const resetPassword = asyncHandler(async (req, res, next) => {
 
 // LOGOUT (Explicación)
 export const logout = asyncHandler(async (req, res, next) => {
-  // Extraemos el token del header 'Authorization'
   const authHeader = req.headers.authorization;
   if (authHeader) {
     const token = authHeader.split(' ')[1];

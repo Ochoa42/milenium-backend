@@ -37,7 +37,7 @@ export const EMPLEADO_CONFIG = {
 }
 
 export const PROVEEDOR_CONFIG = {
-  searchableFields: ['nombre', 'apellido_paterno', 'apellido_materno'],
+  searchableFields: ['nombre', 'apellido_paterno', 'apellido_materno', 'razon_social', 'nit_ci', 'contacto'],
   filterableFields: ['zona_id'],
   defaultSort: ['nombre', 'ASC']
 }
@@ -68,9 +68,9 @@ export const VENTA_CONFIG = {
 }
 
 export const PRODUCTO_CONFIG = {
-  searchableFields: ['nombre_producto', 'descripcion'],
-  filterableFields: ['metodo_cobro'],
-  defaultSort: ['nombre_producto', 'ASC']
+  searchableFields: ['nombre_comercial', 'codigo_barras', '$categoria.nombre$', '$marca.nombre$'],
+  filterableFields: ['id_categoria', 'id_marca', 'estado', 'maneja_vencimiento'],
+  defaultSort: ['nombre_comercial', 'ASC']
 }
 
 export const EVENTO_FAENADO_CONFIG = {
@@ -87,4 +87,59 @@ export const LOTES_EN_FAENADO_CONFIG = {
   ],
   filterableFields: ['$EventoFaenado.estado'],
   defaultSort: ['createdAt', 'DESC']
+}
+
+export const MARCA_CONFIG = {
+  searchableFields: ['nombre', 'descripcion'],
+  filterableFields: ['esta_activo'],
+  defaultSort: ['nombre', 'ASC']
+}
+
+export const CATEGORIA_CONFIG = {
+  searchableFields: ['nombre', 'descripcion'],
+  filterableFields: ['esta_activo'],
+  defaultSort: ['nombre', 'ASC']
+}
+
+
+export const UBICACIONES_CONFIG = {
+  searchableFields: ['nombre', 'descripcion'],
+  filterableFields: ['esta_activo', 'tipo_area'],
+  defaultSort: ['nombre', 'ASC']
+}
+
+export const UNIDAD_MEDIDA_CONFIG = {
+  searchableFields: ['nombre', 'abreviatura'],
+  filterableFields: ['esta_activo'],
+  defaultSort: ['nombre', 'ASC']
+}
+
+export const LOTE_CONFIG = {
+  searchableFields: ['codigo_lote', '$producto.nombre_comercial$', '$proveedor.nombre$'],
+  filterableFields: ['id_producto', 'id_proveedor'],
+  defaultSort: ['fecha_ingreso', 'DESC']
+}
+
+export const STOCK_DISTRIBUCION_CONFIG = {
+  searchableFields: ['$lote.codigo_lote$', '$lote.producto.nombre_comercial$', '$ubicacion.nombre$'],
+  filterableFields: ['id_lote', 'id_ubicacion'],
+  defaultSort: ['createdAt', 'DESC']
+}
+
+export const PRODUCTOS_SERIES_CONFIG = {
+  searchableFields: ['numero_serie', '$lote.producto.nombre_comercial$'],
+  filterableFields: ['id_lote', 'id_ubicacion', 'estado'],
+  defaultSort: ['numero_serie', 'ASC']
+}
+
+export const PRESENTACION_CONFIG = {
+  searchableFields: ['nombre', '$producto.nombre_comercial$'],
+  filterableFields: ['id_producto', 'esta_activo'],
+  defaultSort: ['nombre', 'ASC']
+}
+
+export const KARDEX_MOVIMIENTO_CONFIG = {
+  searchableFields: ['$lote.codigo_lote$', '$lote.producto.nombre_comercial$'],
+  filterableFields: ['id_lote', 'tipo_movimiento', 'id_ubicacion_origen', 'id_ubicacion_destino', 'id_usuario'],
+  defaultSort: ['fecha', 'DESC']
 }

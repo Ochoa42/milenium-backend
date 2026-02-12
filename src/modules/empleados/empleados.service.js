@@ -116,7 +116,7 @@ export const findAllEmpleadoFull = async (query) => {
     include: [
       {
         model: db.Usuario,
-        attributes: ['id', 'name_user']
+        attributes: ['id', 'name_user', 'email']
       }
     ]
   });
